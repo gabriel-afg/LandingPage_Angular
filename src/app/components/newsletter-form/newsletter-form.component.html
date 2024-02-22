@@ -10,14 +10,17 @@
       condimentum, vel euismod erat placerat. In iaculis arcu eros, eget temp</p>
   </div>
 
-  <form>
+  <form [formGroup]="newsletterForm">
     <label for="name">Name</label>
-    <input id="name" type="text"/>
+    <input id="name" formControlName="name"/>
     <label for="email">Email</label>
-    <input id="email" type="email" />
+    <input id="email" formControlName="email"/>
     <btn-primary
       btn-text="se inscreva"
       variant="secondary"
+      [disabled]="!newsletterForm.valid"
+      (submit)="onSubmit()"
+      [loading]="loading()"
       >
     </btn-primary>
   </form>
